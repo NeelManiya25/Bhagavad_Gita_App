@@ -1,9 +1,10 @@
 import 'dart:convert';
+
+import 'package:bhagvat_geeta/models/all_chapters_model.dart';
+import 'package:bhagvat_geeta/models/chapter_model.dart';
+import 'package:bhagvat_geeta/models/json_decode_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:geeta/models/all_chapters_model.dart';
-import 'package:geeta/models/chapter_model.dart';
-import 'package:geeta/models/json_decode_model.dart';
 
 class ChapterJsonDecodeProvider extends ChangeNotifier {
   ChapterJsonDecodeModel chapterJsonDecodeModel = ChapterJsonDecodeModel(

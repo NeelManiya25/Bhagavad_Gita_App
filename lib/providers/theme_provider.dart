@@ -1,5 +1,5 @@
+import 'package:bhagvat_geeta/models/theme_model.dart';
 import 'package:flutter/material.dart';
-import 'package:geeta/models/theme_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier {
