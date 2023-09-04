@@ -41,85 +41,95 @@ class _ChapterDetailPageState extends State<ChapterDetailPage> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.25,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/${Provider.of<ChapterJsonDecodeProvider>(context, listen: false).chapterJsonDecodeModel.allChapter[chapterIndex].imageName}.jpg',
+      body: Stack(
+        children: [
+          Container(
+            decoration:
+                BoxDecoration(image: DecorationImage(image: NetworkImage(""))),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(
+                            'assets/images/${Provider.of<ChapterJsonDecodeProvider>(context, listen: false).chapterJsonDecodeModel.allChapter[chapterIndex].imageName}.jpg',
+                          ),
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                      fit: BoxFit.contain,
                     ),
                   ),
-                ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    "Name Meaning",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    Provider.of<ChapterJsonDecodeProvider>(context,
+                            listen: false)
+                        .chapterJsonDecodeModel
+                        .allChapter[chapterIndex]
+                        .nameMeaning,
+                    style: const TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "Summary",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    Provider.of<ChapterJsonDecodeProvider>(context,
+                            listen: false)
+                        .chapterJsonDecodeModel
+                        .allChapter[chapterIndex]
+                        .chapterSummaryEnglish,
+                    style: const TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('all_verses_page');
+                      },
+                      child: const Text("All Verses"),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text(
-                "Name Meaning",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                Provider.of<ChapterJsonDecodeProvider>(context, listen: false)
-                    .chapterJsonDecodeModel
-                    .allChapter[chapterIndex]
-                    .nameMeaning,
-                style: const TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "Summary",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                Provider.of<ChapterJsonDecodeProvider>(context, listen: false)
-                    .chapterJsonDecodeModel
-                    .allChapter[chapterIndex]
-                    .chapterSummaryEnglish,
-                style: const TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Center(
-                child: OutlinedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('all_verses_page');
-                  },
-                  child: const Text("All Verses"),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
